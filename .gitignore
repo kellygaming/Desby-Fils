@@ -1,0 +1,4 @@
+# vidéos sources fal.ai (trop lourdes, les images découpées suffisent au site)
+.outils/generations/*.mp4
+Thumbs.db
+desktop.ini

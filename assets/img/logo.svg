@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="t">
+  <title id="t">Desby &amp; Fils SARL — Bâtiment &amp; Services</title>
+  <defs>
+    <path id="arc" d="M 72 200 A 128 128 0 0 1 328 200"/>
+    <clipPath id="disc"><circle cx="200" cy="200" r="150"/></clipPath>
+  </defs>
+  <!-- fond -->
+  <circle cx="200" cy="200" r="196" fill="#fff"/>
+  <!-- anneau bleu, ouvert sur les côtés au niveau du bandeau -->
+  <path d="M 30 186 A 171 171 0 0 1 370 186" fill="none" stroke="#2b74b8" stroke-width="9"/>
+  <path d="M 52 268 A 171 171 0 0 0 348 268" fill="none" stroke="#2b74b8" stroke-width="9"/>
+  <!-- texte en arc -->
+  <text font-family="'Arial Narrow','Roboto Condensed',Arial,sans-serif" font-size="34" font-weight="700" fill="#2b74b8" letter-spacing="1">
+    <textPath href="#arc" startOffset="50%" text-anchor="middle">DESBY &amp; FILS <tspan font-weight="400" font-style="italic">sarl</tspan></textPath>
+  </text>
+  <!-- ciel : demi-disque bleu -->
+  <path d="M 104 196 A 96 96 0 0 1 296 196 Z" fill="#2b74b8"/>
+  <!-- maisons -->
+  <g stroke-linejoin="miter">
+    <!-- maison gauche -->
+    <path d="M 48 196 L 104 150 L 150 186 L 150 196 Z" fill="#fff"/>
+    <path d="M 40 196 L 104 144 L 158 188" fill="none" stroke="#e3232c" stroke-width="13"/>
+    <rect x="76" y="178" width="5" height="5" fill="#2b74b8"/><rect x="83" y="178" width="5" height="5" fill="#2b74b8"/>
+    <rect x="76" y="185" width="5" height="5" fill="#2b74b8"/><rect x="83" y="185" width="5" height="5" fill="#2b74b8"/>
+    <!-- maison droite -->
+    <path d="M 352 196 L 296 150 L 250 186 L 250 196 Z" fill="#fff"/>
+    <path d="M 360 196 L 296 144 L 242 188" fill="none" stroke="#e3232c" stroke-width="13"/>
+    <rect x="312" y="178" width="5" height="5" fill="#2b74b8"/><rect x="319" y="178" width="5" height="5" fill="#2b74b8"/>
+    <rect x="312" y="185" width="5" height="5" fill="#2b74b8"/><rect x="319" y="185" width="5" height="5" fill="#2b74b8"/>
+    <!-- cheminées -->
+    <rect x="140" y="124" width="12" height="30" fill="#e3232c"/>
+    <rect x="248" y="124" width="12" height="30" fill="#e3232c"/>
+    <!-- maison centrale -->
+    <path d="M 128 196 L 200 126 L 272 196 Z" fill="#fff"/>
+    <path d="M 112 200 L 200 114 L 288 200" fill="none" stroke="#e3232c" stroke-width="17"/>
+    <path d="M 140 196 L 200 138 L 260 196" fill="none" stroke="#2b74b8" stroke-width="3"/>
+    <rect x="192" y="152" width="6" height="6" fill="#2b74b8"/><rect x="201" y="152" width="6" height="6" fill="#2b74b8"/>
+    <rect x="192" y="161" width="6" height="6" fill="#2b74b8"/><rect x="201" y="161" width="6" height="6" fill="#2b74b8"/>
+    <path d="M 192 196 L 192 182 A 8 8 0 0 1 208 182 L 208 196 Z" fill="#2b74b8"/>
+  </g>
+  <!-- bandeau BATIMENT & SERVICES -->
+  <text x="200" y="246" text-anchor="middle" font-family="'Oswald','Impact','Arial Narrow',sans-serif" font-size="46" font-weight="700" fill="#e3232c" letter-spacing="0.5" textLength="330" lengthAdjust="spacingAndGlyphs">BATIMENT &amp; SERVICES</text>
+  <rect x="104" y="258" width="192" height="5" fill="#2b74b8"/>
+  <!-- tabouret akan -->
+  <g fill="#e3232c">
+    <path d="M 146 280 Q 200 268 254 280 Q 258 290 246 294 Q 200 286 154 294 Q 142 290 146 280 Z"/>
+    <path d="M 172 296 L 228 296 Q 232 312 222 322 L 178 322 Q 168 312 172 296 Z"/>
+    <path d="M 160 324 L 240 324 L 248 342 L 152 342 Z"/>
+  </g>
+  <g fill="#fff">
+    <path d="M 186 300 Q 180 310 186 318 L 194 318 L 194 300 Z"/>
+    <path d="M 214 300 Q 220 310 214 318 L 206 318 L 206 300 Z"/>
+  </g>
+</svg>
