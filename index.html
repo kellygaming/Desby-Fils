@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:wght@400;500;600;700;800&family=Saira+Stencil+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -27,6 +27,7 @@
     <nav class="nav" id="nav">
       <a href="index.html" aria-current="page">Accueil</a>
       <a href="a-propos.html">À propos</a>
+      <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
       <a class="btn" href="contact.html">Nous contacter</a>
     </nav>
@@ -68,6 +69,7 @@
   <section class="scene scene--maison" id="scene-maison"
            data-seq-path="assets/seq/maison/" data-seq-count="96" data-seq-ext="jpg" data-seq-reverse="true">
     <div class="scene__pin">
+      <img class="marque-eau" src="assets/img/logo.svg" alt="" aria-hidden="true">
       <canvas class="seq" aria-hidden="true"></canvas>
 
       <div class="illus" aria-hidden="true">
@@ -215,7 +217,7 @@
         <div class="revele"><strong data-compte="154">0</strong><span>hectares · Baie des Milliardaires</span></div>
         <div class="revele"><strong data-compte="62">0</strong><span>hectares viabilisés · Songon</span></div>
         <div class="revele"><strong data-compte="500" data-suffixe=" m²">0</strong><span>lots à la baie</span></div>
-        <div class="revele"><strong data-compte="300" data-suffixe=" m²">0</strong><span>lots à Songon</span></div>
+        <div class="revele"><strong data-compte="400" data-suffixe=" m²">0</strong><span>lots à Songon</span></div>
       </div>
     </div>
   </section>
@@ -224,6 +226,7 @@
   <section class="scene scene--route" id="scene-route"
            data-seq-path="assets/seq/route/" data-seq-count="96" data-seq-ext="jpg">
     <div class="scene__pin">
+      <img class="marque-eau" src="assets/img/logo.svg" alt="" aria-hidden="true">
       <canvas class="seq" aria-hidden="true"></canvas>
 
       <div class="illus" aria-hidden="true">
@@ -405,10 +408,10 @@
             <span class="lot__badge">Viabilisation en cours</span>
           </div>
           <div class="lot__corps">
-            <h3>Songon · Adjeby</h3>
+            <h3>Songon · Agneby</h3>
             <div class="lieu">Commune de Songon</div>
             <p>Remblayage des voies et des parcelles, postes d'eau, viabilisation. Un support solide, prêt à recevoir vos constructions. Les mutualistes partenaires y sont prioritaires.</p>
-            <dl><div><dt>Superficie</dt><dd>62 ha</dd></div><div><dt>Lots</dt><dd>300 m²</dd></div><div><dt>Accès</dt><dd>Voies</dd></div></dl>
+            <dl><div><dt>Superficie</dt><dd>62 ha</dd></div><div><dt>Lots</dt><dd>400 m²</dd></div><div><dt>Accès</dt><dd>Voies</dd></div></dl>
             <a class="btn btn--whatsapp" href="https://wa.me/2250709362503?text=Bonjour%20Desby%20%26%20Fils%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20un%20lot%20%C3%A0%20Songon." target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a15 15 0 0 1-6.6-5.8c-.5-.7-.9-1.6-.9-2.5 0-.9.5-1.4.7-1.6.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4l.7 1.7c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.6.8c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
               Réserver un lot</a>
@@ -443,19 +446,33 @@
     </div>
     <div class="bande" aria-label="Photos de nos chantiers et de nos partenaires">
       <div class="bande__piste">
-        <figure><img src="assets/img/visite-geometres-2.jpg" alt="" loading="lazy"><figcaption>Bornage avec les géomètres</figcaption></figure>
-        <figure><img src="assets/img/briques-equipe.jpg" alt="" loading="lazy"><figcaption>Fabrication de briques en terre compressée</figcaption></figure>
-        <figure><img src="assets/img/signature-convention.jpg" alt="" loading="lazy"><figcaption>Signature d'une convention</figcaption></figure>
-        <figure><img src="assets/img/visite-tourisme.jpg" alt="" loading="lazy"><figcaption>Visite officielle du site</figcaption></figure>
-        <figure><img src="assets/img/briques-arrosage.jpg" alt="" loading="lazy"><figcaption>Cure des briques</figcaption></figure>
-        <figure><img src="assets/img/bureau-logo.jpg" alt="" loading="lazy"><figcaption>Nos bureaux</figcaption></figure>
+        <figure><img src="assets/img/visite-geometres-2.jpg" alt="Bornage avec les géomètres" loading="lazy"><figcaption>Bornage avec les géomètres</figcaption></figure>
+        <figure><img src="assets/img/blog/elec-1.jpg" alt="Éclairage public sur un lotissement" loading="lazy"><figcaption>Éclairage public sur un lotissement</figcaption></figure>
+        <figure><img src="assets/img/briques-equipe.jpg" alt="Fabrication de briques en terre compressée" loading="lazy"><figcaption>Fabrication de briques en terre compressée</figcaption></figure>
+        <figure><img src="assets/img/blog/born-1.jpg" alt="Relevés GPS sur le terrain" loading="lazy"><figcaption>Relevés GPS sur le terrain</figcaption></figure>
+        <figure><img src="assets/img/signature-convention.jpg" alt="Signature d’une convention" loading="lazy"><figcaption>Signature d’une convention</figcaption></figure>
+        <figure><img src="assets/img/blog/gd-1.jpg" alt="Chargeuse sur le chantier Grâce Divine" loading="lazy"><figcaption>Chargeuse sur le chantier Grâce Divine</figcaption></figure>
+        <figure><img src="assets/img/visite-tourisme.jpg" alt="Visite officielle du site" loading="lazy"><figcaption>Visite officielle du site</figcaption></figure>
+        <figure><img src="assets/img/blog/elec-4.jpg" alt="Poteaux en béton livrés sur site" loading="lazy"><figcaption>Poteaux en béton livrés sur site</figcaption></figure>
+        <figure><img src="assets/img/briques-arrosage.jpg" alt="Cure des briques" loading="lazy"><figcaption>Cure des briques</figcaption></figure>
+        <figure><img src="assets/img/blog/ren-2.jpg" alt="Compte rendu avec nos partenaires" loading="lazy"><figcaption>Compte rendu avec nos partenaires</figcaption></figure>
+        <figure><img src="assets/img/bureau-logo.jpg" alt="Nos bureaux" loading="lazy"><figcaption>Nos bureaux</figcaption></figure>
         <!-- doublon pour la boucle -->
         <figure aria-hidden="true"><img src="assets/img/visite-geometres-2.jpg" alt="" loading="lazy"><figcaption>Bornage avec les géomètres</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/blog/elec-1.jpg" alt="" loading="lazy"><figcaption>Éclairage public sur un lotissement</figcaption></figure>
         <figure aria-hidden="true"><img src="assets/img/briques-equipe.jpg" alt="" loading="lazy"><figcaption>Fabrication de briques en terre compressée</figcaption></figure>
-        <figure aria-hidden="true"><img src="assets/img/signature-convention.jpg" alt="" loading="lazy"><figcaption>Signature d'une convention</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/blog/born-1.jpg" alt="" loading="lazy"><figcaption>Relevés GPS sur le terrain</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/signature-convention.jpg" alt="" loading="lazy"><figcaption>Signature d’une convention</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/blog/gd-1.jpg" alt="" loading="lazy"><figcaption>Chargeuse sur le chantier Grâce Divine</figcaption></figure>
         <figure aria-hidden="true"><img src="assets/img/visite-tourisme.jpg" alt="" loading="lazy"><figcaption>Visite officielle du site</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/blog/elec-4.jpg" alt="" loading="lazy"><figcaption>Poteaux en béton livrés sur site</figcaption></figure>
         <figure aria-hidden="true"><img src="assets/img/briques-arrosage.jpg" alt="" loading="lazy"><figcaption>Cure des briques</figcaption></figure>
+        <figure aria-hidden="true"><img src="assets/img/blog/ren-2.jpg" alt="" loading="lazy"><figcaption>Compte rendu avec nos partenaires</figcaption></figure>
         <figure aria-hidden="true"><img src="assets/img/bureau-logo.jpg" alt="" loading="lazy"><figcaption>Nos bureaux</figcaption></figure>
+      </div>
+      <div class="bande__fleches">
+        <button class="fleche fleche--prec" type="button" aria-label="Photos précédentes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="fleche fleche--suiv" type="button" aria-label="Photos suivantes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </section>
@@ -483,7 +500,7 @@
         <img src="assets/img/logo.svg" alt="Desby & Fils SARL">
         <p>Aménagement foncier, BTP, génie civil et services. Partenaire sûr de votre investissement immobilier.</p>
       </div>
-      <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="index.html#lotissements">Lotissements</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#lotissements">Lotissements</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div><h4>Métiers</h4><ul><li>Aménagement foncier</li><li>BTP · Génie civil</li><li>Location de machines</li><li>Fourniture bâtiment</li></ul></div>
       <div><h4>Contact</h4><ul>
         <li>Siège social : Cocody Angré 7ème tranche, Abidjan</li>
@@ -502,6 +519,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=3"></script>
 </body>
 </html>

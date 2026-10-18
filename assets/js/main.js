@@ -40,6 +40,107 @@
     if (m) m.classList.add('visible');
   }
 
+  /* ---------- son de la société : lecture / pause ---------- */
+  const audio = new Audio('assets/audio/desby-fils.mp3');
+  audio.preload = 'none';
+  const lecteur = document.createElement('button');
+  lecteur.className = 'lecteur-son';
+  lecteur.type = 'button';
+  lecteur.setAttribute('aria-label', 'Écouter le son Desby & Fils');
+  lecteur.innerHTML = `<span class="rond">
+      <svg class="anneau" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="24"/></svg>
+      <svg class="ico lecture" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="ico pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    </span><span class="texte">Écouter<small>Le son Desby &amp; Fils</small></span><span class="barres" aria-hidden="true"><i></i><i></i><i></i></span>`;
+  document.body.appendChild(lecteur);
+  const anneau = lecteur.querySelector('.anneau circle');
+  lecteur.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
+  audio.addEventListener('play', () => { lecteur.classList.add('joue'); lecteur.setAttribute('aria-label', 'Mettre le son en pause'); });
+  audio.addEventListener('pause', () => { lecteur.classList.remove('joue'); lecteur.setAttribute('aria-label', 'Écouter le son Desby & Fils'); });
+  audio.addEventListener('ended', () => { audio.currentTime = 0; anneau.style.strokeDashoffset = 150.8; });
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) anneau.style.strokeDashoffset = 150.8 * (1 - audio.currentTime / audio.duration);
+  });
+  // une seule source sonore à la fois : couper le son si une vidéo démarre
+  document.querySelectorAll('video').forEach(v => v.addEventListener('play', () => audio.pause()));
+
+  /* ---------- bande photo : défile seule, flèches et glisser ---------- */
+  document.querySelectorAll('.bande').forEach(bande => {
+    const piste = bande.querySelector('.bande__piste');
+    const pas = () => (piste.querySelector('figure')?.offsetWidth || 300) + 18;
+    let pause = false, reprise = null, x = piste.scrollLeft;
+    const arreter = (ms = 4000) => { pause = true; clearTimeout(reprise); reprise = setTimeout(() => { pause = false; x = piste.scrollLeft; }, ms); };
+    // la piste contient les photos en double : on revient au début sans que ça se voie
+    // vers l'avant : passé la moitié, on recule d'une moitié ; vers l'arrière : trop près du début, on avance d'une moitié
+    const boucler = (arriere = false) => {
+      const moitie = piste.scrollWidth / 2;
+      if (piste.scrollLeft >= moitie) piste.scrollLeft -= moitie;
+      else if (arriere && piste.scrollLeft < pas() * 1.5) piste.scrollLeft += moitie;
+      x = piste.scrollLeft;
+    };
+    if (!reduit) {
+      const avancer = () => {
+        if (!pause) {
+          // x garde les fractions de pixel que scrollLeft arrondit
+          x += 0.45;
+          const moitie = piste.scrollWidth / 2;
+          if (x >= moitie) x -= moitie;
+          piste.scrollLeft = x;
+        }
+        requestAnimationFrame(avancer);
+      };
+      requestAnimationFrame(avancer);
+    }
+    bande.querySelector('.fleche--prec')?.addEventListener('click', () => { arreter(); boucler(true); piste.scrollBy({ left: -pas(), behavior: 'smooth' }); });
+    bande.querySelector('.fleche--suiv')?.addEventListener('click', () => { arreter(); boucler(); piste.scrollBy({ left: pas(), behavior: 'smooth' }); });
+    piste.addEventListener('mouseenter', () => { pause = true; });
+    piste.addEventListener('mouseleave', () => arreter(800));
+    piste.addEventListener('touchstart', () => arreter(), { passive: true });
+    piste.addEventListener('wheel', () => arreter(), { passive: true });
+    // glisser à la souris
+    let depart = null;
+    piste.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; depart = { x: e.clientX, s: piste.scrollLeft }; piste.classList.add('saisie'); arreter(); });
+    window.addEventListener('pointermove', e => { if (!depart) return; const avant = piste.scrollLeft; piste.scrollLeft = depart.s - (e.clientX - depart.x); if (piste.scrollLeft !== avant) { boucler(piste.scrollLeft < avant); depart = { x: e.clientX, s: piste.scrollLeft }; } });
+    window.addEventListener('pointerup', () => { if (depart) { depart = null; piste.classList.remove('saisie'); arreter(); } });
+  });
+
+  /* ---------- visionneuse des albums ---------- */
+  const albums = document.querySelectorAll('[data-album]');
+  if (albums.length) {
+    const v = document.createElement('div');
+    v.className = 'visionneuse';
+    v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', 'Photo agrandie');
+    v.innerHTML = `<span class="compte"></span><figure><img alt=""><figcaption></figcaption></figure>
+      <button class="fermer" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <button class="prec" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="suiv" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>`;
+    document.body.appendChild(v);
+    const img = v.querySelector('img'), leg = v.querySelector('figcaption'), compte = v.querySelector('.compte');
+    let liste = [], i = 0, dernierFocus = null;
+    const montrer = n => {
+      i = (n + liste.length) % liste.length;
+      const b = liste[i];
+      img.src = b.dataset.grand || b.querySelector('img').src;
+      img.alt = b.querySelector('img').alt;
+      leg.textContent = b.querySelector('span')?.textContent || '';
+      compte.textContent = `${String(i + 1).padStart(2, '0')} / ${String(liste.length).padStart(2, '0')}`;
+    };
+    const ouvrir = (album, n) => { liste = [...album.querySelectorAll('button')]; dernierFocus = document.activeElement; montrer(n); v.classList.add('ouverte'); document.documentElement.style.overflow = 'hidden'; v.querySelector('.fermer').focus(); };
+    const fermer = () => { v.classList.remove('ouverte'); document.documentElement.style.overflow = ''; dernierFocus?.focus(); };
+    albums.forEach(album => album.querySelectorAll('button').forEach((b, n) => b.addEventListener('click', () => ouvrir(album, n))));
+    v.querySelector('.fermer').addEventListener('click', fermer);
+    v.querySelector('.prec').addEventListener('click', () => montrer(i - 1));
+    v.querySelector('.suiv').addEventListener('click', () => montrer(i + 1));
+    v.addEventListener('click', e => { if (e.target === v) fermer(); });
+    document.addEventListener('keydown', e => {
+      if (!v.classList.contains('ouverte')) return;
+      if (e.key === 'Escape') fermer(); else if (e.key === 'ArrowLeft') montrer(i - 1); else if (e.key === 'ArrowRight') montrer(i + 1);
+    });
+    let tx = null;
+    v.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    v.addEventListener('touchend', e => { if (tx === null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) montrer(i + (d < 0 ? 1 : -1)); tx = null; });
+  }
+
   if (!aGsap) { window.addEventListener('scroll', () => majEntete(window.scrollY), { passive: true }); return; }
 
   gsap.registerPlugin(ScrollTrigger);
